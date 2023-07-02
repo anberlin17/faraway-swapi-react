@@ -36,7 +36,10 @@ const router = createBrowserRouter(
 				{
 					path: 'person/:id',
 					element: <PersonInfo />,
-					loader: ({ params }) => fetchPerson(params.id),
+					loader: ({ params }) =>
+						defer({
+							data: fetchPerson(params.id),
+						}),
 				},
 			],
 		},
