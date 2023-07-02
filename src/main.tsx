@@ -8,38 +8,41 @@ import Root from './routes/Root'
 import { fetchPeople, fetchPerson, findPerson } from './helpers'
 import './index.scss'
 
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Root />,
-		errorElement: <ErrorPage />,
-		children: [
-			{
-				path: '/',
-				index: true,
-				element: <CharactersList />,
-				loader: ({ request }) => {
-					const url = new URL(request.url)
+const router = createBrowserRouter(
+	[
+		{
+			path: '/',
+			element: <Root />,
+			errorElement: <ErrorPage />,
+			children: [
+				{
+					path: '/',
+					index: true,
+					element: <CharactersList />,
+					loader: ({ request }) => {
+						const url = new URL(request.url)
 
-					if (url.searchParams.has('search')) {
-						return defer({
-							data: findPerson(url.searchParams.get('search')),
-						})
-					} else {
-						return defer({
-							data: fetchPeople(url.searchParams.get('page')),
-						})
-					}
+						if (url.searchParams.has('search')) {
+							return defer({
+								data: findPerson(url.searchParams.get('search')),
+							})
+						} else {
+							return defer({
+								data: fetchPeople(url.searchParams.get('page')),
+							})
+						}
+					},
 				},
-			},
-			{
-				path: 'person/:id',
-				element: <PersonInfo />,
-				loader: ({ params }) => fetchPerson(params.id),
-			},
-		],
-	},
-])
+				{
+					path: 'person/:id',
+					element: <PersonInfo />,
+					loader: ({ params }) => fetchPerson(params.id),
+				},
+			],
+		},
+	],
+	{ basename: '/faraway-swapi-react' }
+)
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
