@@ -48,7 +48,7 @@ const router = createHashRouter(
 			],
 		},
 	],
-	{ basename: '/faraway-swapi-react' }
+	{ basename: '/' }
 )
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
