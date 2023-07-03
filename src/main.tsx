@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, defer } from 'react-router-dom'
+import { createHashRouter, RouterProvider, defer } from 'react-router-dom'
 import PersonInfo from './routes/PersonInfo'
 import ErrorPage from './routes/ErrorPage'
 import CharactersList from './routes/PeopleList'
@@ -8,7 +8,11 @@ import Root from './routes/Root'
 import { fetchPeople, fetchPerson, findPerson } from './helpers'
 import './index.scss'
 
-const router = createBrowserRouter(
+/*
+	We need to use a Hash Router instead of a Browser Router,
+	because GitHub Pages does not support browser history
+*/
+const router = createHashRouter(
 	[
 		{
 			path: '/',
