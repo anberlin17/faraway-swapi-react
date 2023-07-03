@@ -17,7 +17,7 @@ function PersonInfo() {
 		return () => (prevValueRef.current = value)
 	}
 
-	function handleEdit(propKey: keyof IPeople) {
+	function handleEdit(person: IPeople, propKey: keyof IPeople) {
 		return (value: string) => {
 			updateLocalStoragePerson(
 				{
@@ -51,7 +51,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Name">
 								<Text
 									editable={{
-										onChange: handleEdit('name'),
+										onChange: handleEdit(person, 'name'),
 										onStart: preserveValue(person.name),
 									}}
 								>
@@ -61,7 +61,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Gender">
 								<Text
 									editable={{
-										onChange: handleEdit('gender'),
+										onChange: handleEdit(person, 'gender'),
 										onStart: preserveValue(person.gender),
 									}}
 								>
@@ -71,7 +71,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Birth year">
 								<Text
 									editable={{
-										onChange: handleEdit('birth_year'),
+										onChange: handleEdit(person, 'birth_year'),
 										onStart: preserveValue(person.birth_year),
 									}}
 								>
@@ -81,7 +81,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Eye color">
 								<Text
 									editable={{
-										onChange: handleEdit('eye_color'),
+										onChange: handleEdit(person, 'eye_color'),
 										onStart: preserveValue(person.eye_color),
 									}}
 								>
@@ -91,7 +91,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Hair color">
 								<Text
 									editable={{
-										onChange: handleEdit('hair_color'),
+										onChange: handleEdit(person, 'hair_color'),
 										onStart: preserveValue(person.hair_color),
 									}}
 								>
@@ -101,7 +101,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Skin color">
 								<Text
 									editable={{
-										onChange: handleEdit('skin_color'),
+										onChange: handleEdit(person, 'skin_color'),
 										onStart: preserveValue(person.skin_color),
 									}}
 								>
@@ -111,7 +111,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Height">
 								<Text
 									editable={{
-										onChange: handleEdit('height'),
+										onChange: handleEdit(person, 'height'),
 										onStart: preserveValue(person.height),
 									}}
 								>
@@ -121,7 +121,7 @@ function PersonInfo() {
 							<Descriptions.Item label="Mass">
 								<Text
 									editable={{
-										onChange: handleEdit('mass'),
+										onChange: handleEdit(person, 'mass'),
 										onStart: preserveValue(person.mass),
 									}}
 								>
