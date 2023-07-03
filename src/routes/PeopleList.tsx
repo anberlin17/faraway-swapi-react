@@ -13,7 +13,6 @@ function CharactersList() {
 	const navigation = useNavigation()
 	const navigate = useNavigate()
 
-	const currentPage = Number(searchParams.get('page')) || 1
 	const isLoading = navigation.state === 'loading'
 
 	const onSearch = (value: string) => {
@@ -42,7 +41,7 @@ function CharactersList() {
 									align: 'center',
 									showSizeChanger: false,
 									disabled: isLoading,
-									defaultCurrent: currentPage,
+									defaultCurrent: Number(searchParams.get('page')) || 1,
 									hideOnSinglePage: true,
 									showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
 									onChange: page => navigate({ search: `?page=${page}` }),
